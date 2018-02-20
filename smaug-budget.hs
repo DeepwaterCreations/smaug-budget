@@ -1,0 +1,43 @@
+-- What it should do:
+
+-- -There are buckets of money. Call them "coinheaps". 
+-- I want to be able to add money to heaps, and subtract money from heaps.
+-- I want to be able to make records over time of these transactions.
+-- There should also be a "cental coinheap" where unallocated money goes.
+--
+-- A single transaction has:
+--  A target heap
+--  An amount
+--  A comment describing the purpose: What was bought, where did the income come from, etc.
+--
+-- A coinheap has:
+--  A name
+--  A description/notes
+--  An amount
+--  An optional default transaction?
+--
+--  ...but that's all very OOP, and maybe the wrong way to frame it?
+--
+--
+--  Command line:
+--      List heaps
+--      Add a heap
+--      Delete a heap
+--      Print a name/desc
+--      Edit a heap name/desc
+--      Put money in a heap
+--      Take money from a heap
+--      Return present size of heap
+--      Transfer money between two heaps
+--      List transactions for a heap, or overall
+--      Delete/edit previous transactions
+--      Show projections into the future?
+--      Dump database to a plaintext format or something?
+--
+--      Hey, what's this look like as a monad/monoid/all that jazz that I still haven't fully grokked?
+--
+--      TODO:
+--      Don't use the ArchHaskell repository, it allegedly sucks
+--      http://coldwa.st/e/blog/2013-08-20-Cabal-sandbox.html
+--      Get the haskell mongodb bindings: https://github.com/mongodb-haskell/mongodb
+--      Implement away!
