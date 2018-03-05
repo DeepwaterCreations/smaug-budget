@@ -54,13 +54,6 @@ subtCoins coinheap subtAmount reason = addCoins coinheap (-subtAmount) reason
 size :: Coinheap -> MoneyAmount
 size = foldl (\acc t -> acc + (amount t)) 0
 
---  ...but that's all very OOP, and maybe the wrong way to frame it?
---
---  A coinheap is mostly a set of transactions and a description.
---  Function: Takes a coinheap, an amount, and a comment, and adds that transaction to the heap. 
---            Ditto but subtracts.
---            Takes a coinheap, and returns a value
---
 --  Basically, I'm adding tags to amounts of money. "Coinheap" is just a tag.
 --  Functions:
 --      Add money with a tag and comment, possibly negative value
