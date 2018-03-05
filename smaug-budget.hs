@@ -42,6 +42,13 @@ data TaggedCoinheap = TaggedCoinheap Name Description Coinheap deriving (Show)
 emptyHeap :: Name -> Description -> TaggedCoinheap
 emptyHeap name desc = TaggedCoinheap name desc []
 
+-- Apply a function to a tagged coinheap's coins
+($:) :: (Coinheap -> Coinheap) -> TaggedCoinheap -> TaggedCoinheap
+f $: (TaggedCoinheap name desc coinheap) = TaggedCoinheap name desc (f coinheap)
+
+($~) :: (Coinheap -> a) -> TaggedCoinheap -> a
+f $~ (TaggedCoinheap _ _ coinheap) = f coinheap
+
 -- Add some amount of money to a coinheap
 addCoins :: Coinheap -> MoneyAmount -> String -> Coinheap
 addCoins coinheap addedAmount reason = (Transaction addedAmount reason) : coinheap
