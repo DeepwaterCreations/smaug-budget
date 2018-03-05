@@ -11,6 +11,8 @@
 --  A comment describing the purpose: What was bought, where did the income come from, etc.
 --  A date!
 --
+data Transaction = Transaction { amount :: Double
+                               , comment :: String } deriving (Show)
 -- A coinheap has:
 --  A name
 --  A description/notes
