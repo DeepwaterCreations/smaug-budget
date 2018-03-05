@@ -19,6 +19,11 @@ data Transaction = Transaction { amount :: Double
 --  An amount
 --  An optional default transaction?
 --
+
+data Coinheap = Coinheap {name :: String
+                         ,description :: String
+                         ,transactions :: [Transaction]} deriving (Show)
+
 --  ...but that's all very OOP, and maybe the wrong way to frame it?
 --
 --  A coinheap is mostly a set of transactions and a description.
