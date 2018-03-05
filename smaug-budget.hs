@@ -31,18 +31,11 @@ data Transaction = Transaction { amount :: MoneyAmount
 --  An optional default transaction?
 --
 
-data Coinheap = Coinheap {name :: String
-                         ,description :: String
-                         ,transactions :: [Transaction]} deriving (Show)
-
---Get an empty coinheap
-emptyHeap :: String -> String -> Coinheap
-emptyHeap name desc = Coinheap name desc []
+type Coinheap = [Transaction]
 
 -- Add some amount of money to a coinheap
 addCoins :: Coinheap -> MoneyAmount -> String -> Coinheap
-addCoins (Coinheap name desc transactions) addedAmount reason = Coinheap name desc (newTrans:transactions)
-    where newTrans = Transaction addedAmount reason
+addCoins coinheap addedAmount reason = (Transaction addedAmount reason) : coinheap
 
 -- Remove some amount of money from a coinheap
 subtCoins :: Coinheap -> MoneyAmount -> String -> Coinheap
@@ -50,8 +43,7 @@ subtCoins coinheap subtAmount reason = addCoins coinheap (-subtAmount) reason
 
 -- Get the current balance of a coinheap
 size :: Coinheap -> MoneyAmount
-size coinheap = foldl (\acc t -> acc + (amount t)) 0 transactionList
-    where transactionList = transactions coinheap
+size = foldl (\acc t -> acc + (amount t)) 0
 
 --  ...but that's all very OOP, and maybe the wrong way to frame it?
 --
