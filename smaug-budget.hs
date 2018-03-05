@@ -9,6 +9,7 @@
 --  A target heap
 --  An amount
 --  A comment describing the purpose: What was bought, where did the income come from, etc.
+--  A date!
 --
 -- A coinheap has:
 --  A name
@@ -17,6 +18,22 @@
 --  An optional default transaction?
 --
 --  ...but that's all very OOP, and maybe the wrong way to frame it?
+--
+--  A coinheap is mostly a set of transactions and a description.
+--  Function: Takes a coinheap, an amount, and a comment, and adds that transaction to the heap. 
+--            Ditto but subtracts.
+--            Takes a coinheap, and returns a value
+--
+--  Basically, I'm adding tags to amounts of money. "Coinheap" is just a tag.
+--  Functions:
+--      Add money with a tag and comment, possibly negative value
+--      Sum all transactions with a given tag/set of tags?/more complicated?
+--      List comments of all transactions with a given tag
+--      Ditto dateranges
+--      Display all tags in use
+--      Also edit/display comments on tags
+--
+--      Will my bank send emails or something with my balance, for automatic reconciliation?
 --
 --
 --  Command line:
