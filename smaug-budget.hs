@@ -1,5 +1,6 @@
 module SmaugBudget
 ( Coinheap(..)
+, TaggedCoinheap(..)
 , emptyHeap
 , addCoins
 , subtCoins
@@ -32,6 +33,14 @@ data Transaction = Transaction { amount :: MoneyAmount
 --
 
 type Coinheap = [Transaction]
+
+type Name = String
+type Description = String
+type TaggedCoinheap = (Name, Description, Coinheap)
+
+-- Start a new heap with no transactions
+emptyHeap :: Name -> Description -> TaggedCoinheap
+emptyHeap name desc = (name, desc, [])
 
 -- Add some amount of money to a coinheap
 addCoins :: Coinheap -> MoneyAmount -> String -> Coinheap
