@@ -1,3 +1,8 @@
+module SmaugBudget
+( Coinheap(..)
+, addCoins
+) where
+
 -- What it should do:
 
 -- -There are buckets of money. Call them "coinheaps". 
@@ -37,6 +42,10 @@ addCoins (Coinheap name desc transactions) addedAmount reason = Coinheap name de
 subtCoins :: Coinheap -> Double -> String -> Coinheap
 subtCoins coinheap subtAmount reason = addCoins coinheap (-subtAmount) reason
 
+-- Get the current balance of a coinheap
+size :: Coinheap -> Double
+size coinheap = foldl (\acc t -> acc + (amount t)) 0 transactionList
+    where transactionList = transactions coinheap
 
 --  ...but that's all very OOP, and maybe the wrong way to frame it?
 --
