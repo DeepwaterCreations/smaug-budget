@@ -28,6 +28,15 @@ data Coinheap = Coinheap {name :: String
 emptyHeap :: String -> String -> Coinheap
 emptyHeap name desc = Coinheap name desc []
 
+-- Add some amount of money to a coinheap
+addCoins :: Coinheap -> Double -> String -> Coinheap
+addCoins (Coinheap name desc transactions) addedAmount reason = Coinheap name desc (newTrans:transactions)
+    where newTrans = Transaction addedAmount reason
+
+-- Remove some amount of money from a coinheap
+subtCoins :: Coinheap -> Double -> String -> Coinheap
+subtCoins coinheap subtAmount reason = addCoins coinheap (-subtAmount) reason
+
 
 --  ...but that's all very OOP, and maybe the wrong way to frame it?
 --
