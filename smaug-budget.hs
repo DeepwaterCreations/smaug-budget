@@ -50,12 +50,12 @@ f $: (TaggedCoinheap name desc coinheap) = TaggedCoinheap name desc (f coinheap)
 f $~ (TaggedCoinheap _ _ coinheap) = f coinheap
 
 -- Add some amount of money to a coinheap
-addCoins :: Coinheap -> MoneyAmount -> String -> Coinheap
-addCoins coinheap addedAmount reason = (Transaction addedAmount reason) : coinheap
+addCoins :: MoneyAmount -> String -> Coinheap -> Coinheap
+addCoins addedAmount reason coinheap = (Transaction addedAmount reason) : coinheap
 
 -- Remove some amount of money from a coinheap
-subtCoins :: Coinheap -> MoneyAmount -> String -> Coinheap
-subtCoins coinheap subtAmount reason = addCoins coinheap (-subtAmount) reason
+subtCoins :: MoneyAmount -> String -> Coinheap -> Coinheap
+subtCoins subtAmount reason = addCoins (-subtAmount) reason
 
 -- Get the current balance of a coinheap
 size :: Coinheap -> MoneyAmount
