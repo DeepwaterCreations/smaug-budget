@@ -36,11 +36,11 @@ type Coinheap = [Transaction]
 
 type Name = String
 type Description = String
-type TaggedCoinheap = (Name, Description, Coinheap)
+data TaggedCoinheap = TaggedCoinheap Name Description Coinheap deriving (Show)
 
 -- Start a new heap with no transactions
 emptyHeap :: Name -> Description -> TaggedCoinheap
-emptyHeap name desc = (name, desc, [])
+emptyHeap name desc = TaggedCoinheap name desc []
 
 -- Add some amount of money to a coinheap
 addCoins :: Coinheap -> MoneyAmount -> String -> Coinheap
