@@ -6,6 +6,9 @@ module SmaugBudget
 , size
 ) where
 
+
+type MoneyAmount = Double
+
 -- What it should do:
 
 -- -There are buckets of money. Call them "coinheaps". 
@@ -19,7 +22,7 @@ module SmaugBudget
 --  A comment describing the purpose: What was bought, where did the income come from, etc.
 --  A date!
 --
-data Transaction = Transaction { amount :: Double
+data Transaction = Transaction { amount :: MoneyAmount
                                , comment :: String } deriving (Show)
 -- A coinheap has:
 --  A name
@@ -37,16 +40,16 @@ emptyHeap :: String -> String -> Coinheap
 emptyHeap name desc = Coinheap name desc []
 
 -- Add some amount of money to a coinheap
-addCoins :: Coinheap -> Double -> String -> Coinheap
+addCoins :: Coinheap -> MoneyAmount -> String -> Coinheap
 addCoins (Coinheap name desc transactions) addedAmount reason = Coinheap name desc (newTrans:transactions)
     where newTrans = Transaction addedAmount reason
 
 -- Remove some amount of money from a coinheap
-subtCoins :: Coinheap -> Double -> String -> Coinheap
+subtCoins :: Coinheap -> MoneyAmount -> String -> Coinheap
 subtCoins coinheap subtAmount reason = addCoins coinheap (-subtAmount) reason
 
 -- Get the current balance of a coinheap
-size :: Coinheap -> Double
+size :: Coinheap -> MoneyAmount
 size coinheap = foldl (\acc t -> acc + (amount t)) 0 transactionList
     where transactionList = transactions coinheap
 
