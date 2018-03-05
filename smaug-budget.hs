@@ -1,6 +1,9 @@
 module SmaugBudget
 ( Coinheap(..)
+, emptyHeap
 , addCoins
+, subtCoins
+, size
 ) where
 
 -- What it should do:
