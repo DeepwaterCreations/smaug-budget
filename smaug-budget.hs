@@ -24,6 +24,11 @@ data Coinheap = Coinheap {name :: String
                          ,description :: String
                          ,transactions :: [Transaction]} deriving (Show)
 
+--Get an empty coinheap
+emptyHeap :: String -> String -> Coinheap
+emptyHeap name desc = Coinheap name desc []
+
+
 --  ...but that's all very OOP, and maybe the wrong way to frame it?
 --
 --  A coinheap is mostly a set of transactions and a description.
