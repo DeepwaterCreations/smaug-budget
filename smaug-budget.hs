@@ -24,7 +24,15 @@ type MoneyAmount = Double
 --  A date!
 --
 data Transaction = Transaction { amount :: MoneyAmount
-                               , comment :: String } deriving (Show)
+                               , comment :: String
+                               }
+
+instance Show Transaction where
+    show (Transaction amount comment) 
+        | amount >= 0 = "$" ++ (show amount) ++ sepString ++ comment
+        | otherwise = "($" ++ (show $ abs amount) ++ ")" ++ sepString ++ comment
+        where sepString = "  | Reason: "
+
 -- A coinheap has:
 --  A name
 --  A description/notes
