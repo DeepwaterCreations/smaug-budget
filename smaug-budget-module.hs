@@ -108,3 +108,14 @@ size = foldl (\acc t -> acc + (amount t)) 0
 --      http://coldwa.st/e/blog/2013-08-20-Cabal-sandbox.html
 --      Get the haskell mongodb bindings: https://github.com/mongodb-haskell/mongodb
 --      Implement away!
+
+
+--Here's a function for quick and dirty testing:
+--
+makeTestHeap :: IO TaggedCoinheap
+makeTestHeap = do
+    let a = emptyHeap "Blah" "I am sleepy"
+    let b = (addCoins 500 "Sweet windfall!") $: a
+    let c = (addCoins 25 "I picked up a monies") $: b
+    let d = (subtCoins 5000 "Bought a new groshtanoggin") $: c
+    return d
