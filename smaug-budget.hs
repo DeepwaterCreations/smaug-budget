@@ -42,6 +42,11 @@ instance Show Transaction where
 
 type Coinheap = [Transaction]
 
+prettyPrint :: Coinheap -> String
+prettyPrint (t:ts) 
+    |null ts = show t
+    |otherwise = (show t) ++ ['\n'] ++ prettyPrint ts
+
 type Name = String
 type Description = String
 data TaggedCoinheap = TaggedCoinheap Name Description Coinheap deriving (Show)
